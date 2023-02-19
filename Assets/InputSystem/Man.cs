@@ -33,7 +33,7 @@ public partial class @Man : IInputActionCollection2, IDisposable
                     ""id"": ""c70dd6d6-2f10-4e12-a57e-3559f7d9ed86"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -53,6 +53,15 @@ public partial class @Man : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Button"",
+                    ""id"": ""100fac63-bb98-4658-b88b-17d3e199206e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,7 +77,7 @@ public partial class @Man : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""WASD"",
                     ""id"": ""bd8ce19f-6921-44c8-a236-086941bef874"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -121,32 +130,15 @@ public partial class @Man : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""UI"",
-            ""id"": ""28b30a91-b06a-4b27-9967-872d5df4aa47"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""dafaa49d-e89f-4dd3-8bb6-0f852860ddce"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""b12fa8b8-b4c7-4d4d-9b48-75a5df20eabc"",
+                    ""id"": ""06dabfef-4258-4c21-80a8-92fa651a44ed"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -160,9 +152,7 @@ public partial class @Man : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Pickup = m_Player.FindAction("Pickup", throwIfNotFound: true);
         m_Player_Check = m_Player.FindAction("Check", throwIfNotFound: true);
-        // UI
-        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +215,7 @@ public partial class @Man : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Pickup;
     private readonly InputAction m_Player_Check;
+    private readonly InputAction m_Player_Look;
     public struct PlayerActions
     {
         private @Man m_Wrapper;
@@ -232,6 +223,7 @@ public partial class @Man : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Pickup => m_Wrapper.m_Player_Pickup;
         public InputAction @Check => m_Wrapper.m_Player_Check;
+        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -250,6 +242,9 @@ public partial class @Man : IInputActionCollection2, IDisposable
                 @Check.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheck;
                 @Check.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheck;
                 @Check.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheck;
+                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -263,51 +258,18 @@ public partial class @Man : IInputActionCollection2, IDisposable
                 @Check.started += instance.OnCheck;
                 @Check.performed += instance.OnCheck;
                 @Check.canceled += instance.OnCheck;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // UI
-    private readonly InputActionMap m_UI;
-    private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Newaction;
-    public struct UIActions
-    {
-        private @Man m_Wrapper;
-        public UIActions(@Man wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_UI; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
-        public void SetCallbacks(IUIActions instance)
-        {
-            if (m_Wrapper.m_UIActionsCallbackInterface != null)
-            {
-                @Newaction.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-            }
-            m_Wrapper.m_UIActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
-            }
-        }
-    }
-    public UIActions @UI => new UIActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnPickup(InputAction.CallbackContext context);
         void OnCheck(InputAction.CallbackContext context);
-    }
-    public interface IUIActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }

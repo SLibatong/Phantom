@@ -11,7 +11,7 @@
                     "id": "c70dd6d6-2f10-4e12-a57e-3559f7d9ed86",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": true
                 },
                 {
@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Look",
+                    "type": "Button",
+                    "id": "100fac63-bb98-4658-b88b-17d3e199206e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -46,7 +55,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "WASD",
                     "id": "bd8ce19f-6921-44c8-a236-086941bef874",
                     "path": "2DVector",
                     "interactions": "",
@@ -99,32 +108,15 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "UI",
-            "id": "28b30a91-b06a-4b27-9967-872d5df4aa47",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "dafaa49d-e89f-4dd3-8bb6-0f852860ddce",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "b12fa8b8-b4c7-4d4d-9b48-75a5df20eabc",
+                    "id": "06dabfef-4258-4c21-80a8-92fa651a44ed",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2,67 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
-public class PlayerControl : MonoBehaviour
+namespace PlayerMan
 {
-    Man inputActions;
-    private Vector3 playerPosition;
-    private bool touch = false;
-    public GameObject mainCamera;
-    private Rigidbody rb;
-    private PlayerInput playerInput;
-    public float moveSpeed;
-
-    private Man playerInputActions;
-
-    private void Awake()
+    [CreateAssetMenu(menuName = "Player Control")]
+    public class PlayerControl : ScriptableObject, Man.IPlayerActions
     {
-        playerInput = GetComponent<PlayerInput>();
-        rb = GetComponent<Rigidbody>();
-        playerInputActions = new Man();
-        playerInputActions.Player.Enable();
-        playerInputActions.Player.Pickup.performed += Pickup;
-        playerInputActions.Player.Move.performed += Movement;
-    }
+        private bool touch = false;
+        private Rigidbody rb;
+        public float moveSpeed;
+        private float moveX, moveY;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        private Man manInput;
+        public event UnityAction<Vector2> onMove = delegate { };
+        public event UnityAction onStopMove = delegate { };
 
-    }
-
-    // Update is called once per frame
-    private void FiexedUpdate()
-    {
-        //Vector2 inputVecter = playerInputActions.Player.Move.ReadValue<Vector2>();
-        //rb.velocity = transform.TransformVector(new Vector3(inputVecter.x, 0, inputVecter.y) * moveSpeed);
-        
-    }
-
-    public void Pickup(InputAction.CallbackContext obj)
-    {
-
-    }
-
-    public void Movement(InputAction.CallbackContext obj)
-    {
-        Vector2 inputVecter = obj.ReadValue<Vector2>();
-        rb.velocity = transform.TransformVector(new Vector3(inputVecter.x, 0, inputVecter.y) * moveSpeed);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "pickupObject")
+        private void OnEnable()
         {
-            other.gameObject.transform.parent = mainCamera.transform;
+            manInput = new Man();
+
+            manInput.Player.SetCallbacks(this);
+        }
+
+        private void OnDisable()
+        {
+            manInput.Player.Disable();
+        }
+
+        public void EnableInput()
+        {
+            manInput.Player.Enable();
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            if(context.phase == InputActionPhase.Performed)
+            {
+                onMove.Invoke(context.ReadValue<Vector2>());
+            }
+
+            if(context.phase == InputActionPhase.Canceled)
+            {
+                onStopMove.Invoke();
+            }
+        }
+
+        public void OnPickup(InputAction.CallbackContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnCheck(InputAction.CallbackContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnLook(InputAction.CallbackContext context)
+        {
+            throw new System.NotImplementedException();
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.tag == "pickupObject")
-        {
-            touch = false;
-        }
-    }
-
 }
+
