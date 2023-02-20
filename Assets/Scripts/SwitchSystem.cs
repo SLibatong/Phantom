@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayerControl;
 
 namespace GameSystem
 {
@@ -20,6 +21,9 @@ namespace GameSystem
         private int j = 0;
         public float returnDelay;
 
+        private Animator anim;
+        private bool isOff = false;
+
         private void Awake()
         {
             i = transSpeed;
@@ -32,6 +36,7 @@ namespace GameSystem
             Cursor.lockState = CursorLockMode.Locked;
             //Debug.Log(material.color.a);
             SwitchRoom();
+            anim = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -41,7 +46,9 @@ namespace GameSystem
             {
                 isSwitch = true;
                 j++;
-                //Debug.Log(j);
+                //Debug.Log(!isOff);
+                anim.SetBool("isOn", !isOff);
+                isOff = !isOff;
             }
         }
 
