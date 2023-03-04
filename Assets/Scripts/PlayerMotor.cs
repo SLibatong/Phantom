@@ -26,7 +26,7 @@ namespace PlayerControl
         public void ProcessMove(Vector2 input)
         {
             Vector3 movement = new Vector3(input.x, 0, input.y);
-            rb.velocity = transform.TransformDirection(movement) * speed * Time.deltaTime;
+            rb.velocity = transform.TransformDirection(movement * speed * Time.deltaTime);
         }
     }
 }
