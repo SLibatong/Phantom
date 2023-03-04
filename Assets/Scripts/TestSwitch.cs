@@ -23,6 +23,7 @@ public class TestSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Switch the two different world
         if (Input.GetMouseButtonDown(1))
         {
             camera1.SetActive(!b);
