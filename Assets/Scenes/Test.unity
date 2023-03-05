@@ -256,9 +256,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223698372}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &227056184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6536941729498234867, guid: e0c02e7292a17c341a193d80681a0a2d, type: 3}
+  m_PrefabInstance: {fileID: 2035509194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &227056185 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6536941729498234865, guid: e0c02e7292a17c341a193d80681a0a2d, type: 3}
+  m_PrefabInstance: {fileID: 2035509194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &227056187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6536941729498234870, guid: e0c02e7292a17c341a193d80681a0a2d, type: 3}
   m_PrefabInstance: {fileID: 2035509194}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &342302862
@@ -1246,7 +1256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6536941729498234867, guid: e0c02e7292a17c341a193d80681a0a2d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6536941729498234870, guid: e0c02e7292a17c341a193d80681a0a2d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1351,6 +1361,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081812699}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1098913967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6536941729498234867, guid: e0c02e7292a17c341a193d80681a0a2d, type: 3}
+  m_PrefabInstance: {fileID: 912647453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1098913968 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6536941729498234865, guid: e0c02e7292a17c341a193d80681a0a2d, type: 3}
@@ -1594,6 +1609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933b0441a57121b4580d1046d7cc3da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 227056187}
+  vector: {x: 0, y: 0, z: 1.5}
 --- !u!1 &1567137551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,7 +1823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1098913968}
-  viewScale: 80
+  viewScale: 35
   sensitivityX: 7
   sensitivityY: 3
 --- !u!114 &1713160919
@@ -1924,8 +1941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59809608476e7d24aa9bc91387fbb3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 349977478}
-  player2: {fileID: 1713160917}
+  player1: {fileID: 227056184}
+  player2: {fileID: 1098913967}
   delayTime: 2
 --- !u!95 &2024553842
 Animator:

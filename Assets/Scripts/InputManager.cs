@@ -9,19 +9,20 @@ namespace Phantom
     {
         private PlayerInput playerInput;
         private PlayerInput.PlayerActions playerMove;
+        private PlayerInput.GameSystemActions systemInput;
         private PlayerMotor motor;
         private PlayerLook look;
+        private bool ispause = false;
 
-        // Start is called before the first frame update
         void Awake()
         {
             playerInput = new PlayerInput();
             playerMove = playerInput.Player;
+            systemInput = playerInput.GameSystem;
             motor = GetComponent<PlayerMotor>();
             look = GetComponent<PlayerLook>();
         }
 
-        // Update is called once per frame
         void FixedUpdate()
         {
             //tell playermotor to move using the value from our movement action
@@ -36,11 +37,26 @@ namespace Phantom
         private void OnEnable()
         {
             playerInput.Enable();
+            systemInput.Pause.performed += GamePause;
         }
 
         private void OnDisable()
         {
             playerInput.Disable();
+        }
+
+        public void GamePause(InputAction.CallbackContext ctx)
+        {
+            if (ctx.phase == InputActionPhase.Performed && !ispause)
+            {
+                playerMove.Disable();
+                ispause = true;
+            }
+            else if(ctx.phase == InputActionPhase.Performed && ispause)
+            {
+                playerMove.Enable();
+                ispause = false;
+            }
         }
     }
 }

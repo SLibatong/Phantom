@@ -1,23 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickUp : MonoBehaviour
 {
     private bool b;
+    public Transform cameraTransform;
+    public Vector3 vector;
+    private Rigidbody rb;
 
-    // Start is called before the first frame update
+    private PlayerInput playerInput;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     void Start()
     {
         b = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && b)
         {
-            
+            transform.parent = cameraTransform;
+            transform.localPosition = new Vector3(vector.x, vector.y, vector.z);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            rb.isKinematic = true;
+            //Debug.Log(1);
+            playerInput.Player.Disable();
         }
     }
 

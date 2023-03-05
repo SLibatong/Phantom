@@ -8,12 +8,11 @@ namespace Phantom
     {
         public GameObject player1;
         public GameObject player2;
-        protected bool b1 = true, b2 = true;
+        private bool b1 = true, b2 = true;
         public float delayTime;
-        protected bool isAnim = false;
+        private bool isAnim = false;
         private Animator anim;
 
-        private bool inRealWorld;
         private void Awake()
         {
             player1.SetActive(b1);
@@ -29,12 +28,6 @@ namespace Phantom
                 isAnim = true;
                 b2 = !b2;
                 Invoke("SwitchScene", delayTime);
-            }
-
-            inRealWorld = DetectPlayer(player1);
-            if (inRealWorld)
-            {
-
             }
         }
 
@@ -57,16 +50,5 @@ namespace Phantom
             isAnim = false;
         }
 
-        private bool DetectPlayer(GameObject obj)
-        {
-            if (obj.activeSelf == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }
