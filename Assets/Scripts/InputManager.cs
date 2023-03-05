@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PlayerControl
+namespace Phantom
 {
     public class InputManager : MonoBehaviour
     {

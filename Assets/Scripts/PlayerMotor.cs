@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace PlayerControl
+namespace Phantom
 {
     public class PlayerMotor : MonoBehaviour
     {

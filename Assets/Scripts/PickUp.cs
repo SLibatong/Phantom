@@ -17,7 +17,7 @@ public class PickUp : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && b)
         {
-            Debug.Log(12);
+            
         }
     }
 
@@ -26,7 +26,6 @@ public class PickUp : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             b = true;
-            Debug.Log(b);
         }
     }
 
@@ -35,7 +34,6 @@ public class PickUp : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             b = false;
-            Debug.Log(b);
         }
     }
 }
