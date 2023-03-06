@@ -12,7 +12,7 @@ namespace Phantom
         private PlayerInput.GameSystemActions systemInput;
         private PlayerMotor motor;
         private PlayerLook look;
-        private bool ispause = false;
+        private bool gamePause = true;
 
         void Awake()
         {
@@ -21,6 +21,12 @@ namespace Phantom
             systemInput = playerInput.GameSystem;
             motor = GetComponent<PlayerMotor>();
             look = GetComponent<PlayerLook>();
+        }
+
+        private void Update()
+        {
+            bool isPause = PickUp.isPause;
+            PickUpPause(isPause);
         }
 
         void FixedUpdate()
@@ -47,15 +53,27 @@ namespace Phantom
 
         public void GamePause(InputAction.CallbackContext ctx)
         {
-            if (ctx.phase == InputActionPhase.Performed && !ispause)
+            if (ctx.phase == InputActionPhase.Performed && gamePause)
             {
                 playerMove.Disable();
-                ispause = true;
+                gamePause = !gamePause;
             }
-            else if(ctx.phase == InputActionPhase.Performed && ispause)
+            else if(ctx.phase == InputActionPhase.Performed && !gamePause)
             {
                 playerMove.Enable();
-                ispause = false;
+                gamePause = !gamePause;
+            }
+        }
+
+        public void PickUpPause(bool b)
+        {
+            if (b)
+            {
+                playerMove.Disable();
+            }
+            else
+            {
+                playerMove.Enable();
             }
         }
     }
