@@ -22,15 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "15e912f2-153d-4eec-a646-92df8709c5e7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -99,15 +90,32 @@
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "GameSystem",
+            "id": "e1a952da-64c5-443c-b4ea-3ff7a49fbe39",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "d241be73-cf7a-49d3-baa0-524e96e75f02",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "fc09a0f1-1c12-4de4-8f03-3d596d26c220",
-                    "path": "<Keyboard>/space",
+                    "id": "142fd87f-441c-4bc5-b5b6-6720ab1b04fc",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -118,26 +126,70 @@
             "id": "4c97419e-be03-426b-a002-803d3da456f5",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "CheckItem",
+                    "type": "Value",
                     "id": "b10f90dd-8846-4540-89eb-78ef7fb88ec8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "53853586-840f-4591-8d01-be30ee6d05ff",
+                    "name": "2D Vector",
+                    "id": "5c6e5545-cda1-4e92-868e-dd0b9e52fdb1",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckItem",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "cb42f054-f21b-4342-8365-37b959176b63",
+                    "path": "<Mouse>/forwardButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "d1caf973-4308-4f8f-951f-31205f7983eb",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "CheckItem",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "81dcca30-5cd2-4d39-b88b-c04f16468199",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9499db1b-0c65-45c2-9aae-124c4922160e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -164,34 +216,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "System",
-            "id": "e1a952da-64c5-443c-b4ea-3ff7a49fbe39",
-            "actions": [
-                {
-                    "name": "Switch",
-                    "type": "Button",
-                    "id": "d241be73-cf7a-49d3-baa0-524e96e75f02",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "b132721f-3c15-4e2b-8e37-ac73015b578f",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

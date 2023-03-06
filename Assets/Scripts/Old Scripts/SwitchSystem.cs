@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PlayerControl;
+using Phantom;
 
 namespace GameSystem
 {

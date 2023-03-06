@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace PlayerControl
+namespace Phantom
 {
     public class PlayerMotor : MonoBehaviour
     {
@@ -25,8 +25,9 @@ namespace PlayerControl
         //recieve inputs from InputManager
         public void ProcessMove(Vector2 input)
         {
+            //movement
             Vector3 movement = new Vector3(input.x, 0, input.y);
-            rb.velocity = transform.TransformDirection(movement) * speed * Time.deltaTime;
+            rb.velocity = transform.TransformDirection(movement * speed * Time.deltaTime);
         }
     }
 }

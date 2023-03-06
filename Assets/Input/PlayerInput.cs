@@ -44,15 +44,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""15e912f2-153d-4eec-a646-92df8709c5e7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -121,15 +112,32 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""GameSystem"",
+            ""id"": ""e1a952da-64c5-443c-b4ea-3ff7a49fbe39"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""d241be73-cf7a-49d3-baa0-524e96e75f02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""fc09a0f1-1c12-4de4-8f03-3d596d26c220"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""142fd87f-441c-4bc5-b5b6-6720ab1b04fc"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -140,26 +148,70 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ""id"": ""4c97419e-be03-426b-a002-803d3da456f5"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
+                    ""name"": ""CheckItem"",
+                    ""type"": ""Value"",
                     ""id"": ""b10f90dd-8846-4540-89eb-78ef7fb88ec8"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""53853586-840f-4591-8d01-be30ee6d05ff"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5c6e5545-cda1-4e92-868e-dd0b9e52fdb1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckItem"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""cb42f054-f21b-4342-8365-37b959176b63"",
+                    ""path"": ""<Mouse>/forwardButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d1caf973-4308-4f8f-951f-31205f7983eb"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""CheckItem"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""81dcca30-5cd2-4d39-b88b-c04f16468199"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9499db1b-0c65-45c2-9aae-124c4922160e"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -190,34 +242,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""System"",
-            ""id"": ""e1a952da-64c5-443c-b4ea-3ff7a49fbe39"",
-            ""actions"": [
-                {
-                    ""name"": ""Switch"",
-                    ""type"": ""Button"",
-                    ""id"": ""d241be73-cf7a-49d3-baa0-524e96e75f02"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""b132721f-3c15-4e2b-8e37-ac73015b578f"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Switch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -226,16 +250,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        // GameSystem
+        m_GameSystem = asset.FindActionMap("GameSystem", throwIfNotFound: true);
+        m_GameSystem_Pause = m_GameSystem.FindAction("Pause", throwIfNotFound: true);
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
-        m_Interaction_Newaction = m_Interaction.FindAction("New action", throwIfNotFound: true);
+        m_Interaction_CheckItem = m_Interaction.FindAction("CheckItem", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
-        // System
-        m_System = asset.FindActionMap("System", throwIfNotFound: true);
-        m_System_Switch = m_System.FindAction("Switch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -297,14 +320,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -320,9 +341,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -333,23 +351,53 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
 
+    // GameSystem
+    private readonly InputActionMap m_GameSystem;
+    private IGameSystemActions m_GameSystemActionsCallbackInterface;
+    private readonly InputAction m_GameSystem_Pause;
+    public struct GameSystemActions
+    {
+        private @PlayerInput m_Wrapper;
+        public GameSystemActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_GameSystem_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_GameSystem; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameSystemActions set) { return set.Get(); }
+        public void SetCallbacks(IGameSystemActions instance)
+        {
+            if (m_Wrapper.m_GameSystemActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_GameSystemActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameSystemActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameSystemActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_GameSystemActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public GameSystemActions @GameSystem => new GameSystemActions(this);
+
     // Interaction
     private readonly InputActionMap m_Interaction;
     private IInteractionActions m_InteractionActionsCallbackInterface;
-    private readonly InputAction m_Interaction_Newaction;
+    private readonly InputAction m_Interaction_CheckItem;
     public struct InteractionActions
     {
         private @PlayerInput m_Wrapper;
         public InteractionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Interaction_Newaction;
+        public InputAction @CheckItem => m_Wrapper.m_Interaction_CheckItem;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -359,16 +407,16 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_InteractionActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnNewaction;
+                @CheckItem.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnCheckItem;
+                @CheckItem.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnCheckItem;
+                @CheckItem.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnCheckItem;
             }
             m_Wrapper.m_InteractionActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @CheckItem.started += instance.OnCheckItem;
+                @CheckItem.performed += instance.OnCheckItem;
+                @CheckItem.canceled += instance.OnCheckItem;
             }
         }
     }
@@ -406,55 +454,21 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
-
-    // System
-    private readonly InputActionMap m_System;
-    private ISystemActions m_SystemActionsCallbackInterface;
-    private readonly InputAction m_System_Switch;
-    public struct SystemActions
-    {
-        private @PlayerInput m_Wrapper;
-        public SystemActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Switch => m_Wrapper.m_System_Switch;
-        public InputActionMap Get() { return m_Wrapper.m_System; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(SystemActions set) { return set.Get(); }
-        public void SetCallbacks(ISystemActions instance)
-        {
-            if (m_Wrapper.m_SystemActionsCallbackInterface != null)
-            {
-                @Switch.started -= m_Wrapper.m_SystemActionsCallbackInterface.OnSwitch;
-                @Switch.performed -= m_Wrapper.m_SystemActionsCallbackInterface.OnSwitch;
-                @Switch.canceled -= m_Wrapper.m_SystemActionsCallbackInterface.OnSwitch;
-            }
-            m_Wrapper.m_SystemActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Switch.started += instance.OnSwitch;
-                @Switch.performed += instance.OnSwitch;
-                @Switch.canceled += instance.OnSwitch;
-            }
-        }
-    }
-    public SystemActions @System => new SystemActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IGameSystemActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IInteractionActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnCheckItem(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnNewaction(InputAction.CallbackContext context);
-    }
-    public interface ISystemActions
-    {
-        void OnSwitch(InputAction.CallbackContext context);
     }
 }
